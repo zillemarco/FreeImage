@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(LibTIFF4)
 
-set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR}  ${CMAKE_CURRENT_SOURCE_DIR}/zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../../zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../../../zlib/include)
+set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/zlib ${CMAKE_CURRENT_SOURCE_DIR}/zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../zlib ${CMAKE_CURRENT_SOURCE_DIR}/../zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../../zlib ${CMAKE_CURRENT_SOURCE_DIR}/../../zlib/include ${CMAKE_CURRENT_SOURCE_DIR}/../../../zlib ${CMAKE_CURRENT_SOURCE_DIR}/../../../zlib/include)
 
 set(SOURCES 
 		tif_aux.c

@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.0)
 
 option(BUILD_SHARED_LIBS "Build shared library." ON)
 
-
 if(WIN32)
   add_definitions (/D "_CRT_SECURE_NO_WARNINGS")
   if(BUILD_SHARED_LIBS)
@@ -46,7 +45,7 @@ add_subdirectory(LibJPEG)
 
 project(FreeImage)
 
-set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR} DeprecationManager ${CMAKE_CURRENT_SOURCE_DIR}/../../zlib ${CMAKE_CURRENT_SOURCE_DIR}/../../zlib/include )
+set(HEADERS ${CMAKE_CURRENT_SOURCE_DIR} DeprecationManager ${CMAKE_CURRENT_SOURCE_DIR}/zlib ${CMAKE_CURRENT_SOURCE_DIR}/zlib/include )
 
 set(SOURCES
 		FreeImage/BitmapAccess.cpp
@@ -146,13 +145,14 @@ add_library(FreeImage ${LIBTYPE} ${SOURCES})
 target_include_directories(FreeImage PUBLIC ${HEADERS})
 target_link_libraries(FreeImage OpenEXR LibWebP LibTIFF4 LibRawLite LibPNG LibOpenJPEG LibJXR LibJPEG ws2_32)
 
+file(GLOB FreeImageIncludes "${PROJECT_SOURCE_DIR}/*.h")
 
+# Install library
+INSTALL(TARGETS FreeImage
+  RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
+  LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
+  ARCHIVE DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+  )
 
-
-
-
-
-
-
-
-
+# Install public headers
+INSTALL(FILES ${FreeImageIncludes} DESTINATION "${CMAKE_INSTALL_PREFIX}/include")
