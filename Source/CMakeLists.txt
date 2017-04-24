@@ -20,8 +20,6 @@ endif()
 add_definitions(-DOPJ_STATIC -DLIBRAW_NODLL -DDISABLE_PERF_MEASUREMENT -DCINTERFACE)
 add_definitions( "/W3 /D_CRT_SECURE_NO_WARNINGS /wd4005 /wd4996 /wd4477 /wd4267 /wd4244 /wd4018 /wd4305 /wd4018 /wd4838 /wd4101 /wd4800 /wd4554 /wd4101 /wd4146 /wd4804 /wd4309 /wd4146 /wd4102 /nologo" ) 
 
-
-
 # Static build
 #   set(CompilerFlags
 #         CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE
@@ -32,15 +30,13 @@ add_definitions( "/W3 /D_CRT_SECURE_NO_WARNINGS /wd4005 /wd4996 /wd4477 /wd4267 
 #     string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
 #   endforeach()
 
-
-
-add_subdirectory(OpenEXR)
-add_subdirectory(LibWebP)
-add_subdirectory(LibTIFF4)
-add_subdirectory(LibRawLite)
+# add_subdirectory(OpenEXR)
+# add_subdirectory(LibWebP)
+# add_subdirectory(LibTIFF4)
+# add_subdirectory(LibRawLite)
 add_subdirectory(LibPNG)
 add_subdirectory(LibOpenJPEG)
-add_subdirectory(LibJXR)
+# add_subdirectory(LibJXR)
 add_subdirectory(LibJPEG)
 
 project(FreeImage)
@@ -84,8 +80,8 @@ set(SOURCES
 		FreeImage/PluginBMP.cpp
 		FreeImage/PluginCUT.cpp
 		FreeImage/PluginDDS.cpp
-		FreeImage/PluginEXR.cpp
-		FreeImage/PluginG3.cpp
+		# FreeImage/PluginEXR.cpp
+		# FreeImage/PluginG3.cpp
 		FreeImage/PluginGIF.cpp
 		FreeImage/PluginHDR.cpp
 		FreeImage/PluginICO.cpp
@@ -94,7 +90,7 @@ set(SOURCES
 		FreeImage/PluginJNG.cpp
 		FreeImage/PluginJP2.cpp
 		FreeImage/PluginJPEG.cpp
-		FreeImage/PluginJXR.cpp
+		# FreeImage/PluginJXR.cpp
 		FreeImage/PluginKOALA.cpp
 		FreeImage/PluginMNG.cpp
 		FreeImage/PluginPCD.cpp
@@ -105,12 +101,12 @@ set(SOURCES
 		FreeImage/PluginPNM.cpp
 		FreeImage/PluginPSD.cpp
 		FreeImage/PluginRAS.cpp
-		FreeImage/PluginRAW.cpp
+		# FreeImage/PluginRAW.cpp
 		FreeImage/PluginSGI.cpp
 		FreeImage/PluginTARGA.cpp
-		FreeImage/PluginTIFF.cpp
+		# FreeImage/PluginTIFF.cpp
 		FreeImage/PluginWBMP.cpp
-		FreeImage/PluginWebP.cpp
+		# FreeImage/PluginWebP.cpp
 		FreeImage/PluginXBM.cpp
 		FreeImage/PluginXPM.cpp
 		FreeImage/PSDParser.cpp
@@ -126,7 +122,7 @@ set(SOURCES
 		Metadata/IPTC.cpp
 		Metadata/TagConversion.cpp
 		Metadata/TagLib.cpp
-		Metadata/XTIFF.cpp
+		# Metadata/XTIFF.cpp
 		FreeImageToolkit/Background.cpp
 		FreeImageToolkit/BSplineRotate.cpp
 		FreeImageToolkit/Channels.cpp
@@ -143,7 +139,17 @@ set(SOURCES
 		
 add_library(FreeImage ${LIBTYPE} ${SOURCES})
 target_include_directories(FreeImage PUBLIC ${HEADERS})
-target_link_libraries(FreeImage OpenEXR LibWebP LibTIFF4 LibRawLite LibPNG LibOpenJPEG LibJXR LibJPEG ws2_32)
+target_link_libraries(
+	FreeImage
+	# OpenEXR
+	# LibWebP
+	# LibTIFF4
+	# LibRawLite
+	LibPNG
+	LibOpenJPEG
+	# LibJXR
+	LibJPEG
+	ws2_32)
 
 file(GLOB FreeImageIncludes "${PROJECT_SOURCE_DIR}/*.h")
 
